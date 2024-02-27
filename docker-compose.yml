@@ -17,5 +17,22 @@ services:
         networks:
             - mb-network
 
+    php-service:
+        build:
+            dockerfile: ./.docker/php/Dockerfile
+        container_name: php8-container
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./app:/var/www/html
+            - ./.docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+        restart: always
+        environment:
+            XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+        networks:
+            - mb-network
+        extra_hosts:
+            - host.docker.internal:host-gateway
+
 networks:
     mb-network:
