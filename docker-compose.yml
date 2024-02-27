@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+    nginx-service:
+        image: nginx:latest
+        container_name: nginx-container
+        ports:
+            - "8080:80"
+        volumes:
+            - ./app:/var/www/html
+            - ./.docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php-service
+        depends_on:
+            - php-service
+            - mysql-service
+        networks:
+            - mb-network
+
+networks:
+    mb-network:
