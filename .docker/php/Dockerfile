@@ -19,7 +19,6 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 WORKDIR /var/www/html
 RUN ["chmod", "o+w", "/var/www/html/storage/", "-R"]
-RUN ["cp", ".env.example", ".env"]
 RUN ["composer", "install"]
 RUN ["composer", "dump-autoload", "--optimize"]
 RUN ["php", "artisan", "key:generate"]
