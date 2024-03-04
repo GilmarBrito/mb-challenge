@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="{{ Vite::asset('resources/template_assets/css/lineicons.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/template_assets/css/materialdesignicons.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ Vite::asset('resources/template_assets/css/main.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    @livewireStyles
-  </head>
+
+@livewireStyles
+
+</head>
   <body>
     <!-- ======== Preloader =========== -->
     <div id="preloader">
@@ -214,7 +215,7 @@
     <script type="module" src="{{ Vite::asset('resources/template_assets/js/polyfill.js') }}"></script>
     <script type="module" src="{{ Vite::asset('resources/template_assets/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    @livewireScripts
+@livewireScripts
     <script>
         const autoCloseElements = document.querySelectorAll(".auto-close");
 

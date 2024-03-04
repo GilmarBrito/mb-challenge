@@ -40,16 +40,22 @@ Step 2 - Open folder:
 cd mb-challenge
 ```
 
-Step 3 - Copy .env.template for .env file:
-
-```BASH
-cp .env.template .env
-```
-
-Step 4 - Run migrations an seeders:
+Step 3 - Run migrations an seeders:
 
 ```BASH
 docker compose exec php-service php artisan migrate --seed
+```
+
+Step 4 - Install frontend dependencies:
+
+```BASH
+docker compose exec php-service npm install && npm run build
+```
+
+Step 5 - Run command to change storage permissions:
+
+```BASH
+docker compose exec php-service chmod o+w /var/www/html/storage/ -R
 ```
 
 ##### Execute (After run up docker containers)
