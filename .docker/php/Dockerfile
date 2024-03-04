@@ -18,10 +18,10 @@ COPY ./ ./
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 WORKDIR /var/www/html
-RUN ["chmod", "o+w", "/var/www/html/storage/", "-R"]
 RUN ["composer", "install"]
 RUN ["composer", "dump-autoload", "--optimize"]
 RUN ["php", "artisan", "key:generate"]
 RUN ["npm", "install"]
 RUN ["npm", "run", "build"]
+RUN ["chmod", "o+w", "/var/www/html/storage/", "-R"]
 
