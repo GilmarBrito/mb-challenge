@@ -33,35 +33,45 @@ or
 ```BASH
 git clone https://github.com/GilmarBrito/mb-challenge.git
 ```
-
 Step 2 - Open folder:
 
 ```BASH
 cd mb-challenge
 ```
 
-Step 3 - Run migrations an seeders:
+Step 3 - Run the containers:
 
 ```BASH
-docker compose exec php-service php artisan migrate --seed
+docker compose up --build -d
 ```
 
-Step 4 - Install frontend dependencies:
+Step 4 - Install backend dependencies:
+
+```BASH
+docker compose exec php-service composer install && composer dump-autoload --optimize
+```
+
+Step 5 - Install frontend dependencies:
 
 ```BASH
 docker compose exec php-service npm install && npm run build
 ```
 
-Step 5 - Run command to change storage permissions:
+Step 6 - Run Laravel config commands:
 
 ```BASH
-docker compose exec php-service chmod o+w /var/www/html/storage/ -R
+docker compose exec php-service php artisan key:generate && php artisan optimize:clear
 ```
 
+Step 7 - Run Laravel migrations and seeders:
+
+```BASH
+docker compose exec php-service php artisan migrate --seed
+```
 ##### Execute (After run up docker containers)
 
 [http://localhost:8080](http://localhost:8080)
-User:
+User: admin@example.org
 Password: secret
 
 * PS.:

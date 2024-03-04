@@ -22,8 +22,3 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 COPY ./ ./
-
-RUN ["composer", "install"]
-RUN ["composer", "dump-autoload", "--optimize"]
-RUN ["php", "artisan", "key:generate"]
-RUN ["php", "artisan", "optimize:clear"]
