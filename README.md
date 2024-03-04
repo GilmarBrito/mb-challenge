@@ -70,9 +70,9 @@ docker compose exec php-service php artisan migrate --seed
 ```
 ##### Execute (After run up docker containers)
 
-[http://localhost:8080](http://localhost:8080)
-User: admin@example.org
-Password: secret
+- [http://localhost:8080](http://localhost:8080)
+- User: admin@example.org
+- Password: secret
 
 * PS.:
   - To run the application, port 8080 on localhost (127.0.0.1) must be free.
