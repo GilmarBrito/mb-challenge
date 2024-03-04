@@ -1,7 +1,9 @@
 FROM php:8.3.2-fpm
 
-RUN apt-get update && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip acl nodejs npm \
-    && docker-php-ext-install intl opcache mysqli pdo pdo_mysql\
+RUN usermod -u 1000 www-data
+
+RUN apt-get update && apt-get install -y libpng-dev libonig-dev libxml2-dev zlib1g-dev g++ git libicu-dev zip libzip-dev zip acl nodejs npm curl \
+    && docker-php-ext-install intl opcache mysqli pdo pdo_mysql mbstring exif pcntl bcmath gd \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && pecl install xdebug \
@@ -11,20 +13,17 @@ RUN apt-get update && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzi
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY ./ ./
-
-RUN chown -R www-data:www-data \
-    /var/www/html/storage \
-    /var/www/html/bootstrap/cache
+RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 WORKDIR /var/www/html
+
+COPY ./ ./
+
 RUN ["composer", "install"]
 RUN ["composer", "dump-autoload", "--optimize"]
-RUN ["npm", "install"]
-RUN ["npm", "run", "build"]
 RUN ["php", "artisan", "key:generate"]
 RUN ["php", "artisan", "optimize:clear"]
-# RUN ["php", "artisan", "migrate", "--seed"]
