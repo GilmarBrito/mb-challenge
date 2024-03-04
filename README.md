@@ -78,4 +78,6 @@ docker compose exec php-service php artisan migrate --seed
 
 [http://localhost:8080](http://localhost:8080)
 
-* PS.:To run the application, port 8080 on localhost (127.0.0.1) must be free.
+* PS.:
+  - To run the application, port 8080 on localhost (127.0.0.1) must be free.
+  - The .env.template was posted with the api-key just to facilitate installation by the evaluator. We do not recommend this practice.
