@@ -14,11 +14,17 @@ RUN apt-get update && apt-get install -y zlib1g-dev g++ git libicu-dev zip libzi
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./ ./
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data \
+    /var/www/html/storage \
+    /var/www/html/bootstrap/cache
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 WORKDIR /var/www/html
 RUN ["composer", "install"]
 RUN ["composer", "dump-autoload", "--optimize"]
+RUN ["npm", "install"]
+RUN ["npm", "run", "build"]
 RUN ["php", "artisan", "key:generate"]
+RUN ["php", "artisan", "optimize:clear"]
+# RUN ["php", "artisan", "migrate", "--seed"]
