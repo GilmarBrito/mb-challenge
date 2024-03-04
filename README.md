@@ -52,7 +52,7 @@ Step 3 - Run and build the containers:
 docker compose up --build -d
 ```
 
-Step 4 - Install every dependencies:
+<!-- Step 4 - Install every dependencies:
 
 ```BASH
 docker compose exec php-service composer install && docker compose exec php-service composer dump-autoload --optimize
@@ -72,7 +72,7 @@ docker compose exec php-service npm install && npm build
 
 ```BASH
 docker compose exec php-service php artisan migrate --seed
-```
+``` -->
 
 ##### Execute (After run up docker containers)
 
