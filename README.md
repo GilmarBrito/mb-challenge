@@ -46,33 +46,11 @@ Step 3 - Copy .env.template for .env file:
 cp .env.template .env
 ```
 
-Step 3 - Run and build the containers:
-
-```BASH
-docker compose up --build -d
-```
-
-<!-- Step 4 - Install every dependencies:
-
-```BASH
-docker compose exec php-service composer install && docker compose exec php-service composer dump-autoload --optimize
-```
-
-Step 5 - Generate application key:
-
-```BASH
-docker compose exec php-service php artisan key:generate
-```
-
-Step 6 - Compile frontend files:
-
-```BASH
-docker compose exec php-service npm install && npm build
-```
+Step 4 - Run migrations an seeders:
 
 ```BASH
 docker compose exec php-service php artisan migrate --seed
-``` -->
+```
 
 ##### Execute (After run up docker containers)
 

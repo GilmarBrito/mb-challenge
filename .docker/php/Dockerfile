@@ -24,6 +24,4 @@ RUN ["composer", "dump-autoload", "--optimize"]
 RUN ["php", "artisan", "key:generate"]
 RUN ["npm", "install"]
 RUN ["npm", "run", "build"]
-RUN ["php", "artisan", "migrate", "--seed"]
 
-ENTRYPOINT ["/bin/sh", "-c"]
