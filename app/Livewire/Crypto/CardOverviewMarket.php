@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Crypto;
 
-use \NumberFormatter;
+use NumberFormatter;
 use App\Http\Clients\LiveCoinWatchApiClient;
 use LaravelReady\ReadableNumbers\Facades\ReadableNumbers;
 use Livewire\Component;
