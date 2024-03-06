@@ -2,6 +2,8 @@ FROM php:8.3.2-fpm
 
 RUN usermod -u 1000 www-data
 
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 RUN apt-get update && apt-get install -y libpng-dev libonig-dev libxml2-dev zlib1g-dev g++ git libicu-dev zip libzip-dev zip acl nodejs npm curl \
     && docker-php-ext-install intl opcache mysqli pdo pdo_mysql mbstring exif pcntl bcmath gd \
     && pecl install apcu \
