@@ -22,7 +22,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "squizlabs/php_codesniffer": "3.*"
     },
     "autoload": {
         "psr-4": {
@@ -49,7 +50,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "phpcs": "./vendor/bin/phpcs --extensions=php --standard=PSR1,PSR2,PSR12 app/ tests/",
+        "phpcbf": "./vendor/bin/phpcbf --extensions=php --standard=PSR1,PSR12 app/ tests/"
     },
     "extra": {
         "laravel": {
