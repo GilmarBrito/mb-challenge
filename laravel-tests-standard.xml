@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="LaravelTestsStandard">
+    <description>Exclude Camel Caps Methos Name standard for tests folder</description>
+    <rule ref="PSR1.Methods.CamelCapsMethodName">
+        <exclude-pattern>./tests/*</exclude-pattern>
+    </rule>
+</ruleset>
