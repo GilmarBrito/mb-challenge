@@ -74,8 +74,30 @@ docker compose exec php-service php artisan migrate --seed
 - User: admin@example.org
 - Password: secret
 
+##### Others command that you can run
+
+Check code style
+
+```BASH
+docker compose exec php-service composer check-style
+```
+
+Run tests
+
+```BASH
+docker compose exec php-service composer run-tests
+```
+
+Run static analise
+
+```BASH
+docker compose exec php-service composer run-analise
+```
+
 * PS.:
   - To run the application, port 8080 on localhost (127.0.0.1) must be free.
   - The .env was posted with the api-key just to facilitate installation by the evaluator. We do not recommend this practice.
   - The user and password data was posted just to facilitate installation by the evaluator. We do not recommend this practice.
   - The api-key was created precisely for this challenge, so it can be shared in the repository.
+  - The tests do not have complete coverage. The main purpose here is to demonstrate knowledge. I considered doing that because this is just a challenge made in my free time.
+
