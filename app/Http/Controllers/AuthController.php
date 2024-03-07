@@ -9,16 +9,6 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     /**
-     * Instantiate a new LoginRegisterController instance.
-     */
-    public function __construct()
-    {
-        // $this->middleware('guest')->except([
-        //     'logout', 'profile'
-        // ]);
-    }
-
-    /**
      * Display a registration form.
      *
      * @return \Illuminate\Http\Response

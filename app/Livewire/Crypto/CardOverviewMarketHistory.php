@@ -21,8 +21,8 @@ class CardOverviewMarketHistory extends Component
     public function mount()
     {
         $objDateTime = new DateTime();
-        $this->endDate = $objDateTime->format('Y-m-d');
-        $this->startDate = $objDateTime->sub(new DateInterval('P30D'))->format('Y-m-d');
+        $this->endDate = $objDateTime->format('Uv');
+        $this->startDate = $objDateTime->sub(new DateInterval('P30D'))->format('Uv');
 
         $rawData = $this->getDataApi();
 
@@ -36,21 +36,14 @@ class CardOverviewMarketHistory extends Component
         );
     }
 
-    private function convertDateToUnixTimeStamp(string $date, string $format = 'Y-m-d'): string
-    {
-        $objDateTime = DateTime::createFromFormat($format, $date);
-
-        return $objDateTime->format('Uv');
-    }
-
     public function getDataApi(): array
     {
         $liveCoinWatchApiClient = new LiveCoinWatchApiClient();
 
         return json_decode(
             $liveCoinWatchApiClient->overviewHistory(
-                $this->convertDateToUnixTimeStamp($this->startDate),
-                $this->convertDateToUnixTimeStamp($this->endDate)
+                $this->startDate,
+                $this->endDate
             ),
             true
         );

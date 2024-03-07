@@ -3,10 +3,8 @@
 namespace App\Http\Clients;
 
 use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Config;
 use JsonException;
@@ -24,9 +22,10 @@ class LiveCoinWatchApiClient
     }
 
     /**
-     * @param array|null $data Body content
+     * @param string $endpoint
+     * @param array $data
      *
-     * @return JsonResponse
+     * @return string
      * @throws GuzzleException
      * @throws JsonException
      */
